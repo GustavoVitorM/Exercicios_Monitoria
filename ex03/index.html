@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando descoto de dia dos pais</title>
+    <!--
+        3 - Numa promoção para o Dia dos Pais, uma loja irá dar descontos para todos os clientes, 
+        mas especialmente para os pais. Desenvolva um programa que leia o nome do cliente, sexo e 
+        o valor total da compra. Faça o cálculo do desconto de acordo com a tabela abaixo:
+        • Homens recebem 15% de desconto
+        • Mulheres recebem 10% de desconto
+        Mostre como resultado o valor total da compra com o desconto aplicado.
+    -->
+</head>
+<body>
+    <div id="formulario">
+        <p> Nome do Cliente: <input type="text" name="nome" id="nome"> </p>
+        <p> Sexo do cliente: <input type="text" name="sexo" id="sexo" placeholder="masculino/feminino"></p>
+        <p> Valor da Compra: <input type="number" name="compra" id="compra"></p>
+        <button id="enviar">Calcular Desconto</button>
+    </div>
+    <div id="resposta">
+
+    </div>
+
+
+    <script>
+        document.getElementById("enviar").onclick = function() {
+            var nome = document.getElementById("nome").value
+            var sexo = document.getElementById("sexo").value
+            var compra = parseInt(document.getElementById("compra").value)
+
+            resultado = document.getElementById("resposta")
+            var desconto = 0;
+
+            if (sexo === "masculino") {
+                desconto = 15
+            } else if (sexo === "feminino") {
+                desconto = 10
+            }
+
+            resultado.innerText = `Por ser dia dos pais o cliente ${nome} recebeu um desconto de ${desconto}, e o valor da sua compra é ${compra - (compra * desconto)/100}`
+
+        }
+    </script>
+</body>
+</html>
