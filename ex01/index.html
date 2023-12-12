@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salário dos funcionarios</title>
+    <!--1 - Desenvolva um programa para ajudar o departamento pessoal de uma empresa. 
+        O programa deverá ler o nome do funcionário, salário atual e quantidade de dependentes. 
+        Faça o cálculo do novo salário desse funcionário, usando como base os dados abaixo:
+        1, 2, ou 3 Dependentes aumento de 12% do salário
+        4, 5, ou 6 Dependentes aumento de 15% do salário
+        Acima de 6 Dependentes aumento de 21%
+        Como resultado o programa deverá mostrar uma mensagem com o nome do funcionário e o novo salário. -->
+</head>
+<body>
+    <div id="formulario">
+        <p> Nome do funcionario: <input type="text" name="nome" id="nome"> </p> <!-- Pede o nome do funcionário -->
+        <p> Número de dependentes: <input type="number" name="dependentes" id="dependentes"> </p> <!-- Pede o número de dependentes -->
+        <p> Salário do funcionario R$<input type="number" name="salario" id="salario"> </p> <!-- Pede o salário do funcionário -->
+        <input type="button" value="Calcular" onclick="aumento()"> <!-- Ao clickar o botão ele roda a função aumento() -->
+    </div>
+    <!-- Div onse será inserido o resultado da função -->
+    <div id="resultado"></div>
+
+
+    
+    <script>
+        // Declara a função aumento()
+        function aumento() {
+            // Guarda nas variáveis os valores dos formularios
+            nome = document.getElementById("nome").value;
+            depend = parseInt(document.getElementById("dependentes").value);
+            sal = parseInt(document.getElementById("salario").value);
+
+            // Guarda na variável onde será inserido o HTML
+            resultado = document.getElementById("resultado");
+
+            // Estrutura condicional que usa a quantidade de dependentes do funcionário
+            if (depend >= 1 && depend < 4) { // Se o funcionário tiver 1, 2 ou 3 dependentes.
+                novoSal = ((sal * 12) / 100) + sal;
+            } else if (depend >= 4 && depend < 6) { // Se o funcionário tiver 4, 5 ou 6 dependentes.
+                novoSal = ((sal * 15) / 100) + sal;
+            } else if (depend > 6) { // Se o funcionário tiver mais que 6 dependentes.
+                novoSal = ((sal * 21) / 100) + sal;
+            } else { // Se o funcionário não tiver dependentes
+                novoSal = sal;
+            }
+
+            // Insere na div resultado o seguinte texto
+            resultado.innerHTML = `O funcionário ${nome}, teve um aumento, com o novo salário de R$${novoSal}`;
+        } // Fim da função aumento()
+    </script>
+</body>
+</html>
