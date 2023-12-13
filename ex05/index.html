@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+    <!--
+        5 - Desenvolva um cronometro inteligente, esse cronometro irá receber o início, 
+        final e o passo da contagem. Deverá mostrar numa janela a contagem.
+    -->
+</head>
+<body>
+    <h1>Cronometro</h1>
+    <div id="controles">
+        Horas: <input type="number" name="hora" id="hora"> <br>
+        Minutos: <input type="number" name="minutos" id="minutos"> <br>
+        Segundos: <input type="number" name="segundos" id="segundos"> <br>
+    </div><br>
+
+    <button onclick="cronometro()">Iniciar Cronometro</button>
+
+    <div id="cronometro">
+        <h1>00:00:00</h1>
+    </div>
+
+    <script>
+
+        async function cronometro() {
+            const timeout = (duracao) => {
+                return new Promise((resolve, reject) =>{
+                    setTimeout(resolve, duracao)
+                })
+            }
+
+            
+            var hora = parseInt(document.getElementById("hora").value)
+            var minutos = parseInt(document.getElementById("minutos").value)
+            var segundos = parseInt(document.getElementById("segundos").value)
+
+            var cronometro = document.querySelector("#cronometro h1")
+
+            for(hora; hora >= 0; hora--){
+                for(minutos; minutos >= 0; minutos--) {
+                    for(segundos; segundos >= 0; segundos--) {
+                        await timeout(1000)
+                        .then(function() {
+                            cronometro.innerHTML = `${hora}:${minutos}:${segundos}`
+                        })
+                    }
+                    segundos = 60;
+                }
+                minutos =  60;
+            }
+        }
+    </script>
+</body>
+</html>
