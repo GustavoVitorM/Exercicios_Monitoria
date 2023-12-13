@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificando seu Terreno</title>
+    <!--
+        4 - Faça um formulário em HTML com dois campos, um que irá receber comprimento, e o outro a 
+        largura de um terreno. Deverá ter um botão “Calcular Área” nesse formulário, e quando 
+        acionado deve disparar uma função que irá fazer o cálculo e mostrar numa janela a área 
+        total do terreno e sua classificação:
+        • Área até 125m² => TERRENO PADRÃO
+        • Área de 125 a 250m² => TERRENO INTERMEDIÁRIO
+        • Área de 250 a 350m² => TERRENO LUXO
+        • Área acima de 350m² => TERRENO VIP
+    -->
+</head>
+<body>
+    <h1>Classificando seu terreno</h1>
+    <div id="formulario">
+        <label>
+            Qual a largura do seu terreno? 
+            <input type="number" name="lar" id="lar">
+        </label> <br>
+        <label>
+            Qual a altura do seu terreno?
+            <input type="number" name="alt" id="alt">
+        </label> <br>
+        <button onclick="calculoTerreno()">Calcular Terreno</button>
+    </div>
+    <h2>Classificação</h2>
+    <div id="resultado">
+
+    </div>
+
+    <script>
+        function calculoTerreno() {
+            var alt = parseFloat(document.getElementById("alt").value)
+            var lar = parseFloat(document.getElementById("lar").value)
+            var areaTerr = alt*lar
+            var terreno = '';
+            var resultado = document.getElementById("resultado")
+
+            if (areaTerr <= 125) {
+                terreno = 'Terreno Padrão'
+            } else if (areaTerr > 125 && areaTerr <= 250) {
+                terreno = 'Terreno Intermediário'
+            } else if (areaTerr > 250 && areaTerr <= 350) {
+                terreno = 'Terreno de Luxo'
+            } else if (areaTerr > 350) {
+                terreno = 'Terreno VIP'
+            }
+
+            resultado.innerHTML = `O seu terreno é classificado como ${terreno}, tendo ${areaTerr}m²`
+        }
+    </script>
+</body>
+</html>
