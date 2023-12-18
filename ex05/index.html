@@ -24,15 +24,13 @@
     </div>
 
     <script>
-
-        async function cronometro() {
-            const timeout = (duracao) => {
+        const timeout = (duracao) => {
                 return new Promise((resolve, reject) =>{
                     setTimeout(resolve, duracao)
                 })
             }
 
-            
+        async function cronometro() {
             var hora = parseInt(document.getElementById("hora").value)
             var minutos = parseInt(document.getElementById("minutos").value)
             var segundos = parseInt(document.getElementById("segundos").value)
@@ -47,9 +45,9 @@
                             cronometro.innerHTML = `${hora}:${minutos}:${segundos}`
                         })
                     }
-                    segundos = 60;
+                    segundos = 59;
                 }
-                minutos =  60;
+                minutos =  59;
             }
         }
     </script>
