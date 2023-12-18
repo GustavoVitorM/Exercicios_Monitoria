@@ -6,7 +6,7 @@
  * Quantos números são divisíveis por 5
  */
 var listaNum = []
-var listaPar = []
+var listaMaior10 = []
 var listaDiv5 = []
 
 for (var i = 10; i > 0; i--) {
@@ -14,22 +14,17 @@ for (var i = 10; i > 0; i--) {
 }
 
 listaNum.forEach(e => {
-    if (e%2 === 0) {
-        listaPar.push(e)
+    if (e > 10) {
+        listaMaior10.push(e)
     }
     if (Number.isInteger(e/5)) {
         listaDiv5.push(e)
     }
 });
 
-
-
-
-document.getElementById("resultado").innerHTML = `
-    <h1>Foram sorteados os seguintes números:</h1>
-    <p>${listaNum}</p>
-    <h3>Os pares sorteados são: </h3>
-    <p>${listaPar}</p>
-    <h3>Os números divisiveis por cinco são: </h3>
-    <p>${listaDiv5}</p>`
-    
+console.log("Os números escolhidos foram: ")
+console.log(listaNum.join(", "))
+console.log("Os números maiores que 10 são: ")
+console.log(listaMaior10.join(", "))
+console.log("Os números divisiveis por 5 são: ")
+console.log(listaDiv5.join(", "))
