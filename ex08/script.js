@@ -18,32 +18,35 @@ var i = 1
 while (true){
     //Pergunta as informações da pessoa
     console.log(`${i}ª pessoa`) 
-    var nome = prompt("Nome: ")
     var idade = prompt("Idade: ")
     var sexo = prompt("Sexo (M/F): ")
-    var continuar = prompt("Quer Continuar? (S/N)") // pergunta se quer continuar
+    pessoas.push({'idade': parseInt(idade), 'sexo': sexo})
 
-    var pessoa = {'nome': nome, 
-                'idade': parseInt(idade), 
-                'sexo': sexo} // Adiciona as informações a um objeto pessoa
-    // Adiciona a pessoa a uma lista de pessoas
-    pessoas.push(pessoa)
+    while(true) {
+        var continuar = prompt("Quer Continuar? (S/N)") // pergunta se quer continuar
+        if (continuar == 'S' || continuar == 'N') {
+            break
+        } else {
+            console.log("Erro! Resposta inválida, digite 'S' para SIM e 'N' para NÃO. Tente novamente!" )
+        }
+    }
 
     if (continuar === 'N') {
         break
+        sexo = null
+        idade = null
     }
     ++i
 }
 
 var maiorIdade = pessoas[0]
 var menorIdade = pessoas[0]
-var mulMaisNova = pessoas[0]
+var mulMaisNova = {'idade': 99999}
 var homMaisVelho = pessoas[0]
 var medIdadeMul = 0
 var quantMul = 0
 
 pessoas.forEach(el => {
-
     if (maiorIdade['idade'] < el['idade']) {
         maiorIdade = el
     } 
@@ -52,11 +55,11 @@ pessoas.forEach(el => {
         menorIdade = el
     }
 
-    if (mulMaisNova['idade'] < el['idade'] && el['sexo'] === 'F' ) {
+    if (mulMaisNova['idade'] > el['idade'] && el['sexo'] === 'F' ) {
         mulMaisNova = el
     }
 
-    if (homMaisVelho['idade'] > el['idade'] && el['sexo'] === 'M' ) {
+    if (homMaisVelho['idade'] < el['idade'] && el['sexo'] === 'M' ) {
         homMaisVelho = el
     }
 
@@ -66,12 +69,14 @@ pessoas.forEach(el => {
     }
 });
 
-medIdadeMul = medIdadeMul/quantMul
+console.log("\n---- RESULTADOS ----\n")
 
-console.log(pessoas)
-
-console.log(maiorIdade)
-console.log(menorIdade)
-console.log(mulMaisNova)
-console.log(homMaisVelho)
-console.log(medIdadeMul)
+console.log("As pessoas cadastradas foram: ")
+pessoas.forEach(e => {
+    console.log(`idade = ${e['idade']} / sexo = ${e['sexo']}`)
+})
+console.log(`\nOnde, o mais velho tem ${maiorIdade['idade']} anos e é do sexo ${maiorIdade['sexo']}. `)
+console.log(`\nO mais novo tem ${menorIdade['idade']} anos e é do sexo ${menorIdade['sexo']}. `)
+console.log(`\nA mulher mais nova tem ${mulMaisNova['idade']} anos`)
+console.log(`\nO homem mais velho tem ${homMaisVelho['idade']} anos`)
+console.log(`\nA média de idade entre as mulheres é ${medIdadeMul/quantMul}`)
