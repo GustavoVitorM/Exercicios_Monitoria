@@ -22,7 +22,9 @@ for (i = 1; i <= 10; i ++) {
     }
 }
 
+console.log("Os números digitados foram: ")
+console.log(nums.join(", "))
 console.log("Os números pares digitados são: ")
-numPar.forEach(e => { console.log(e) });
+console.log(numPar.join(", "));
 console.log("Os números ímpares digitados são: ")
-numImpar.forEach(e => { console.log(e + "") });
+console.log(numImpar.join(", "));
