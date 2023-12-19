@@ -1,6 +1,8 @@
 /**
  * 6 - Faça um programa que leia 10 números inteiros e
  *  mostre quantos deles são pares e quantos são ímpares.
+ * 
+ * Instale a biblioteca prompt-synnc com o comando npm install --save prompt-sync
  */
 
 const prompt = require("prompt-sync")(); // Para podermos peir um valor ao usuario
